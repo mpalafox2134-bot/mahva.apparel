@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our hoodies !!</title>
+    <style>
+        /* Reset básico */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /* Barra de navegación */
+        nav {
+            background-color: #6c90a1;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h2 {
+            color: white;
+            font-size: 24px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Encabezado */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(to right, #6f7baa, #6b7fab);
+            color: white;
+        }
+
+        header h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 18px;
+        }
+
+        /* Contenedor de productos */
+        .contenedor {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 30px 20px;
+        }
+
+        .producto {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin: 15px;
+            padding: 20px;
+            text-align: center;
+            width: 220px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .producto:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .producto img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .producto h2 {
+            font-size: 20px;
+            margin: 15px 0 10px 0;
+        }
+
+        .producto p {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .btn-comprar {
+            background-color: #6b95a2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-comprar:hover {
+            background-color: #7e8cb2;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 20px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 18px;
+        }
+
+        footer a:hover {
+            color: #6aa4a0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Barra de navegación -->
+<nav>
+    <h2>Mi Tienda</h2>
+    <div>
+        <a href="#">Inicio</a>
+        <a href="#">Productos</a>
+        <a href="#">Contacto</a>
+    </div>
+</nav>
+
+<!-- Encabezado -->
+<header>
+    <h1>MAHVA</h1>
+    <p>OUR HOODIES !!</p>
+</header>
+
+<!-- Productos -->
+<div class="contenedor" id="productos"></div>
+
+<script>
+    // Lista de productos
+    const productos = [
+        {nombre: "Sudadera Negra", descripcion: "45 dlls", imagen: "file:///var/folders/hb/6m_zhpgx4kd23phb56y04yv80000gn/T/TemporaryItems/NSIRD_screencaptureui_fyvH8t/Captura%20de%20pantalla%202025-08-27%20a%20la(s)%205.39.34%E2%80%AFp.m..png"},
+        {nombre: "Sudadera beige", descripcion: "45 dlls", imagen: "file:///var/folders/hb/6m_zhpgx4kd23phb56y04yv80000gn/T/TemporaryItems/NSIRD_screencaptureui_wSxG1n/Captura%20de%20pantalla%202025-08-27%20a%20la(s)%205.43.15%E2%80%AFp.m..png"},
+        {nombre: "Sudadera Azul", descripcion: "45 dlls", imagen: "file:///var/folders/hb/6m_zhpgx4kd23phb56y04yv80000gn/T/TemporaryItems/NSIRD_screencaptureui_6HIpjq/Captura%20de%20pantalla%202025-08-27%20a%20la(s)%205.39.15%E2%80%AFp.m..png"},
+        {nombre: "Sudadera Gris", descripcion: "45 dlls", imagen: "file:///var/folders/hb/6m_zhpgx4kd23phb56y04yv80000gn/T/TemporaryItems/NSIRD_screencaptureui_JyXwdC/Captura%20de%20pantalla%202025-08-27%20a%20la(s)%205.38.45%E2%80%AFp.m..png"},
+        {nombre: "Sudadera blanca", descripcion: "45 dlls", imagen: "file:///var/folders/hb/6m_zhpgx4kd23phb56y04yv80000gn/T/TemporaryItems/NSIRD_screencaptureui_sVmXST/Captura%20de%20pantalla%202025-08-27%20a%20la(s)%205.39.02%E2%80%AFp.m..png"}
+    ];
+
+    const contenedor = document.getElementById("productos");
+
+    productos.forEach(producto => {
+        const div = document.createElement("div");
+        div.className = "producto";
+        div.innerHTML = `
+            <img src="${producto.imagen}" alt="${producto.nombre}">
+            <h2>${producto.nombre}</h2>
+            <p>${producto.descripcion}</p>
+            <button class="btn-comprar">Comprar</button>
+        `;
+        contenedor.appendChild(div);
+    });
+</script>
+
+<!-- Footer -->
+<footer>
+    <p>Síguenos en nuestras redes sociales:</p>
+    <a href="#">Instagram</@mahva.aparel>
+    <p>&copy; 2025 OUR HOODIES !!. MARIA Y VALE.</p>
+</footer>
+
+</body>
+</html>
